@@ -197,7 +197,7 @@ class navigator:
             else:
                 m3u8_link = 'https://www.youtube.com/watch?v=' + stuffs['videoId']
 
-            self.addDirectoryItem(f'[B]{name}[/B]', f'play_movie&url={m3u8_link}&image_url={fixed_poster_link}&full_title={name}', fixed_poster_link, 'DefaultMovies.png', isFolder=False, meta={'title': name, 'plot': f"{description}"})
+            self.addDirectoryItem(f'[B]{name}[/B]', f'play_movie&url={quote_plus(m3u8_link)}&image_url={fixed_poster_link}&full_title={name}', fixed_poster_link, 'DefaultMovies.png', isFolder=False, meta={'title': name, 'plot': f"{description}"})
 
         self.endDirectory('movies')
 
@@ -242,8 +242,7 @@ class navigator:
             else:
                 m3u8_link = 'https://www.youtube.com/watch?v=' + stuffs['videoId']
 
-            self.addDirectoryItem(f'[B]{name}[/B]', f'play_movie&url={m3u8_link}&image_url={fixed_poster_link}&full_title={name}', fixed_poster_link, 'DefaultMovies.png', isFolder=False, meta={'title': name, 'plot': f"{description}"})        
-
+            self.addDirectoryItem(f'[B]{name}[/B]', f'play_movie&url={quote_plus(m3u8_link)}&image_url={fixed_poster_link}&full_title={name}', fixed_poster_link, 'DefaultMovies.png', isFolder=False, meta={'title': name, 'plot': f"{description}"})
         
         self.endDirectory('movies')
 
