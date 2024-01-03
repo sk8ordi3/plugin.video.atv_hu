@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.atv_hu" name="ATV" version="1.0.0" provider-name="heg, vargalex">
+<addon id="plugin.video.atv_hu" name="ATV" version="1.0.2" provider-name="heg, vargalex">
 	<requires>
 		<import addon="script.module.beautifulsoup4" version="4.6.2"/>
 		<import addon="script.module.requests" version="2.22.0"/>
@@ -16,6 +16,8 @@
 		<language>hu</language>
 		<platform>all</platform>
 		<news> 
+			1.0.2 - A megmaradt m3u8 linkeket az oldal lecserélte youtube linkek-re
+			1.0.1 - Oldal változás lekövetve (rengeteg tartalom törölve lett az oldalról)
 			1.0.0 - Első verzió
 		</news>
 		<assets>

@@ -1,2 +1,6 @@
+[B]1.0.2[/B]
+- A megmaradt m3u8 linkeket az oldal lecserélte youtube linkek-re
+[B]1.0.1[/B]
+- Oldal változás lekövetve (rengeteg tartalom törölve lett az oldalról)
 [B]1.0.0[/B]
 - Első verzió

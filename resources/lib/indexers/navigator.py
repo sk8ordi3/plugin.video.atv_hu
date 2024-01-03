@@ -192,7 +192,10 @@ class navigator:
             
             description = clean_html_tags(descr_with_tags)
         
-            m3u8_link = 'https://streamservers.atv.hu/mediacache/_definst_/mp4:atv/' + stuffs['path'] + '/playlist.m3u8'
+            if 'path' in stuffs and stuffs['path']:
+                m3u8_link = 'https://streamservers.atv.hu/mediacache/_definst_/mp4:atv/' + stuffs['path'] + '/playlist.m3u8'
+            else:
+                m3u8_link = 'https://www.youtube.com/watch?v=' + stuffs['videoId']
 
             self.addDirectoryItem(f'[B]{name}[/B]', f'play_movie&url={m3u8_link}&image_url={fixed_poster_link}&full_title={name}', fixed_poster_link, 'DefaultMovies.png', isFolder=False, meta={'title': name, 'plot': f"{description}"})
 
@@ -222,7 +225,7 @@ class navigator:
             
             soup = BeautifulSoup(description, 'html.parser')
             cleaned_text = soup.get_text(separator=' ', strip=True)
-            return cleaned_text        
+            return cleaned_text
         
         for stuffs in response['videos']:
             name = stuffs['name']
@@ -234,7 +237,10 @@ class navigator:
             
             description = clean_html_tags(descr_with_tags)
         
-            m3u8_link = 'https://streamservers.atv.hu/mediacache/_definst_/mp4:atv/' + stuffs['path'] + '/playlist.m3u8'
+            if 'path' in stuffs and stuffs['path']:
+                m3u8_link = 'https://streamservers.atv.hu/mediacache/_definst_/mp4:atv/' + stuffs['path'] + '/playlist.m3u8'
+            else:
+                m3u8_link = 'https://www.youtube.com/watch?v=' + stuffs['videoId']
 
             self.addDirectoryItem(f'[B]{name}[/B]', f'play_movie&url={m3u8_link}&image_url={fixed_poster_link}&full_title={name}', fixed_poster_link, 'DefaultMovies.png', isFolder=False, meta={'title': name, 'plot': f"{description}"})        
 
@@ -245,7 +251,10 @@ class navigator:
         
         xbmc.log(f'{base_log_info}| playMovie | url: {url}', xbmc.LOGINFO)
         
-        play_item = xbmcgui.ListItem(path=url)
+        direct_url = urlresolver.resolve(url)
+        play_item = xbmcgui.ListItem(path=direct_url)
+        
+        #play_item = xbmcgui.ListItem(path=url)
         from inputstreamhelper import Helper
         is_helper = Helper('hls')
         if is_helper.check_inputstream():
